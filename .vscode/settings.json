@@ -1,0 +1,14 @@
+{
+    "go.docsTool": "gogetdoc",
+    "go.toolsEnvVars": {
+        "GO111MODULE": "on"
+    },
+    "go.inferGopath": false,
+    "go.formatTool": "goimports",
+    "python.pythonPath": "/opt/datalayer/opt/miniconda3/envs/datalayer/bin/python",
+    "terminal.integrated.fontFamily": "Meslo LG S for Powerline",
+    "python.linting.pylintEnabled": true,
+    "python.linting.enabled": true,
+    "restructuredtext.confPath": "${workspaceFolder}/repos/jupyter-kernel-provider-kubernetes/docs",
+    "python.dataScience.jupyterServerURI": "local"
+}

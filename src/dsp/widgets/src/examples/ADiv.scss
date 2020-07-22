@@ -1,0 +1,10 @@
+// @import '~@jupyterlab/codemirror/style/index.css';
+
+:root {
+    --dla-color-Green: green;
+}
+
+.dla-GreenText {
+    color: white;
+    background-color: var(--dla-color-Green);
+}

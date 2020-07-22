@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+# Copyright (c) Datalayer https://datalayer.io
+# Distributed under the terms of the Apache License, Version 2.0
+# https://www.apache.org/licenses/LICENSE-2.0.txt
+
+echo
+echo -e $GREEN$BOLD"Minio Help"$NOCOLOR$NOBOLD$NOCOLOR
+echo
+echo """
+mc --help
+
+mc ls play
+
+export POD_NAME=\$(kubectl get pods --namespace dla-minio -l "release=dla-minio" -o jsonpath="{.items[0].metadata.name}")
+kubectl port-forward \$POD_NAME 12000:9000 --namespace dla-minio
+
+mc config host add minikube http://localhost:12000 \$DLA_MINIO_ACCESS_KEY \$DLA_MINIO_SECRET_KEY
+
+mc ls minikube
+mc mb minikube/datalayer-1
+mc ls minikube/datalayer-1
+echo \"hello\" > hello.txt
+mc cp hello.txt minikube/datalayer-1
+mc ls minikube/datalayer-1
+mc cat minikube/datalayer-1/hello.txt
+mc rm minikube/datalayer-1/hello.txt
+rm hello.txt
+
+"""

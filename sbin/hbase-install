@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+# Copyright (c) Datalayer https://datalayer.io
+# Distributed under the terms of the Apache License, Version 2.0
+# https://www.apache.org/licenses/LICENSE-2.0.txt
+
+echo -e $BOLD$YELLOW"Installing Apache HBase"$NOCOLOR$NOBOLD
+echo
+
+rm -fr $DLAOPT/hbase* || true
+
+cd $DLAOPT && \
+  curl https://downloads.apache.org/hbase/${HBASE_VERSION}/hbase-${HBASE_VERSION}-bin.tar.gz | tar -xz && \
+  ln -s hbase-${HBASE_VERSION} hbase

@@ -1,0 +1,13 @@
+iam:
+  clusterType: "minikube"
+  env:
+    DLAHOST: "minikube.datalayer.io.local"
+    DLA_IAM_ROOT_URL: "http://minikube.datalayer.io.local"
+    DLA_IAM_AUTH_CALLBACK: "http://minikube.datalayer.io.local/api/iam/oidc_callback"
+    DLA_IAM_UI_REDIRECT: "http://minikube.datalayer.io.local/home"
+    DLA_IAM_JOIN_SUCCESS: "http://minikube.datalayer.io.local/join/welcome"
+    DLA_IAM_JOIN_ERROR: "http://minikube.datalayer.io.local/join/error"
+    DLA_IAM_PASSWORD_SUCCESS: "http://minikube.datalayer.io.local/forgotpassword/welcome"
+    DLA_IAM_PASSWORD_ERROR: "http://minikube.datalayer.io.local/forgotpassword/error"
+    DLA_LDAP_HOST: "dla-ldap-openldap"
+    DLA_KEYCLOAK_SCHEME_HOST: "http://dla-keycloak-http.dla-keycloak.svc.cluster.local"

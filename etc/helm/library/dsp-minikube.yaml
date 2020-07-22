@@ -1,0 +1,8 @@
+library:
+  clusterType: "minikube"
+  env:
+    DLAHOST: "minikube.datalayer.io.local"
+    DLA_LIBRARY_AUTH_CALLBACK: "http://minikube.datalayer.io.local/api/library/oidc_callback"
+    DLA_LIBRARY_UI_REDIRECT: "http://minikube.datalayer.io.local/home"
+    DLA_SOLR_ZK_HOST: "dla-solr-zookeeper"
+    DLA_KEYCLOAK_SCHEME_HOST: "http://dla-keycloak-http.dla-keycloak.svc.cluster.local"

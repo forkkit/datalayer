@@ -1,0 +1,3 @@
+config:
+    DLA_IAM_AUTH_CALLBACK: ''
+    DLA_STUDIO_INDEX_PAGE: ''

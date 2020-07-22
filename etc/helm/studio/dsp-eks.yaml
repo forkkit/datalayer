@@ -1,0 +1,5 @@
+studio:
+  imagePullPolicy: Always
+  clusterType: "eks"
+  env:
+    DLAHOST: "alpha.datalayer.io"

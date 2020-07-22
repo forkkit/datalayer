@@ -1,0 +1,37 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: simple
+  namespace: {{ .Values.namespace }}
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: simple
+    spec:
+      containers:
+        - name: simple
+          image: datalayer/simple:0.0.3
+#          image: hashicorp/http-echo
+#          args:
+#            - "-text=hello simple-echo"
+          ports:
+            - containerPort: 9876
+              protocol: TCP
+          env:
+          - name: "USERNAME"
+            valueFrom:
+              secretKeyRef:
+                name: {{ .Values.simpleSecretName }}
+                key:  username
+          - name: "DLA_LDAP_BIND_PWD"
+            valueFrom:
+              secretKeyRef:
+                name: {{ .Values.simpleSecretName }}
+                key: DLA_LDAP_BIND_PWD
+          - name: "SIMPLE"
+            valueFrom:
+              configMapKeyRef:
+                name: simple-configmap
+                key:  SIMPLE

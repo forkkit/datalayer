@@ -1,0 +1,76 @@
+{
+  "name": "@datalayer/jupyter-react-storybook",
+  "version": "0.0.1",
+  "license": "Apache-2.0",
+  "private": false,
+  "scripts": {
+    "tsc": "tsc",
+    "build": "concurrently \"tsc\" \"gulp resources-to-lib\"",
+    "build:storybook": "build-storybook -c .storybook -o .out",
+    "clean": "rimraf lib",
+    "storybook": "start-storybook -p 9001 -c .storybook",
+    "watch": "tsc -b --watch"
+  },
+  "dependencies": {
+    "@datalayer/jupyter-react-mui-theme-light": "0.0.1",
+    "@jupyterlab/ui-components": "2.1.0",
+    "@jupyterlab/theme-light-extension": "2.1.0",
+    "@lumino/messaging": "^1.3.2",
+    "@lumino/virtualdom": "^1.3.0",
+    "@lumino/widgets": "^1.9.4",
+    "@nteract/transform-vdom": "~4.0.5-alpha.0",
+    "@material-ui/core": "4.9.7",
+    "@material-ui/icons": "5.0.0-alpha.1",
+    "@material-ui/lab": "4.0.0-alpha.46"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.5.0",
+    "@babel/preset-env": "^7.7.6",
+    "@storybook/core": "5.3.19",
+    "@storybook/react": "5.3.19",
+    "@storybook/addon-actions": "5.3.19",
+    "@storybook/addon-links": "5.3.19",
+    "@types/jest": "24.0.18",
+    "@types/node": "~12.12.21",
+    "@types/react": "16.9.16",
+    "@types/react-dom": "16.9.4",
+    "@types/webpack": "4.41.12",
+    "@types/webpack-env": "^1.14.1",
+    "awesome-typescript-loader": "^5.2.1",
+    "babel-loader": "^8.0.6",
+    "css-loader": "~3.2.0",
+    "raw-loader": "~4.0.0",
+    "react-docgen-typescript-loader": "3.7.2",
+    "style-loader": "~1.0.1",
+    "file-loader": "5.0.2",
+    "rimraf": "~3.0.0",
+    "svg-url-loader": "~2.3.2",
+    "svgo": "~1.2.1",
+    "svgo-loader": "~2.2.0",
+    "url-loader": "3.0.0",
+    "concurrently": "5.0.0",
+    "gulp": "4.0.2",
+    "gulp-append-prepend": "1.0.8",
+    "gulp-filter": "6.0.0",
+    "typescript": "~3.7.3"
+  },
+  "peerDependencies": {
+    "react": "16.9.0",
+    "react-dom": "16.9.0"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

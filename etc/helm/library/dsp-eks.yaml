@@ -1,0 +1,9 @@
+library:
+  imagePullPolicy: Always
+  clusterType: "eks"
+  env:
+    DLAHOST: "alpha.datalayer.io"
+    DLA_LIBRARY_AUTH_CALLBACK: "https://alpha.datalayer.io/api/library/oidc_callback"
+    DLA_LIBRARY_UI_REDIRECT: "https://alpha.datalayer.io/home"
+    DLA_SOLR_ZK_HOST: "dla-solr-zookeeper"
+    DLA_KEYCLOAK_SCHEME_HOST: "https://alpha.datalayer.io"

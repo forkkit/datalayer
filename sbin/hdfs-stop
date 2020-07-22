@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+# Copyright (c) Datalayer https://datalayer.io
+# Distributed under the terms of the Apache License, Version 2.0
+# https://www.apache.org/licenses/LICENSE-2.0.txt
+
+echo -e $BOLD$YELLOW"Stopping Apache HDFS..."$NOCOLOR$NOBOLD
+echo
+
+export DLA_HADOOP_STATUS=stopping
+
+# Run a script to stop DataNodes on all slaves.
+# $HADOOP_HOME/sbin/hadoop-daemon.sh --config $HADOOP_CONF_DIR stop datanode
+echo -e $BOLD$GREEN"Stopping HDFS Namenode..."$NOCOLOR$NOBOLD
+$HADOOP_HOME/bin/hdfs --daemon stop datanode
+
+# Stop the Secondary NameNode.
+# $HADOOP_HOME/sbin/hadoop-daemon.sh --config $HADOOP_CONF_DIR stop secondarynamenode
+echo -e $BOLD$GREEN"Stopping HDFS Secondary Namenode..."$NOCOLOR$NOBOLD
+$HADOOP_HOME/bin/hdfs --daemon stop secondarynamenode
+
+# Stop the NameNode with the following command, run on the designated NameNode.
+# $HADOOP_HOME/sbin/hadoop-daemon.sh --config $HADOOP_CONF_DIR stop namenode
+echo -e $BOLD$GREEN"Stopping HDFS Datanode..."$NOCOLOR$NOBOLD
+$HADOOP_HOME/bin/hdfs --daemon stop namenode

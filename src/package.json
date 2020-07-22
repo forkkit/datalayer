@@ -1,0 +1,61 @@
+{
+  "name": "@datalayer/all",
+  "private": true,
+  "scripts": {
+    "build": "lerna run --scope @datalayer/* build",
+    "install": "lerna run --scope @datalayer/* --parallel install",
+    "serve": "lerna run --scope @datalayer/* --parallel serve",
+    "ls": "lerna ls",
+    "start": "lerna run --scope '@datalayer/{iam,utils,widgets}' --parallel start",
+    "start:iam": "lerna run --scope '@datalayer/{iam,utils,widgets}' --parallel start",
+    "start:studio": "lerna run --scope '@datalayer/{studio,iam,utils,widgets}' --parallel start",
+    "start:example-simple": "lerna run --scope '@datalayer/{example-simple,utils,widgets}' --parallel start",
+    "start:example-extension": "lerna run --scope '@datalayer/example-extension*' --parallel start",
+    "start:jupyterhub": "./dev/start-jupyterhub.sh",
+    "storybook:dsp": "lerna run --scope @datalayer/dsp-storybook --parallel storybook",
+    "storybook:jupyter-react": "lerna run --scope @datalayer/jupyter-react-storybook --parallel storybook",
+    "storybook:jupyter-react-widgets": "lerna run --scope @datalayer/jupyter-react-widgets --parallel storybook",
+    "pf": "run-p pf:*",
+    "pf:k8s-dashboard": "./dev/port-forward-k8s-dashboard.sh",
+    "pf:ldap": "./dev/port-forward-ldap.sh",
+    "pf::solr:zookeeper": "concurrently --kill-others \"./dev/port-forward-solr-zookeeper.sh\" \"./dev/port-forward-solr.sh\"",
+    "pf:solr": "./dev/port-forward-solr.sh",
+    "pf:zookeeper": "./dev/port-forward-solr-zookeeper.sh"
+  },
+  "workspaces": {
+    "packages": [
+      "dsp/*",
+      "examples/simple",
+      "examples/extension/*",
+      "jupyter/lab/*",
+      "jupyter/react/*",
+      "jupyter/react/themes/*"
+    ]
+  },
+  "devDependencies": {
+    "lerna": "^3.16.4",
+    "concurrently": "5.2.0",
+    "npm-run-all": "4.1.5"
+  },
+  "resolutions": {
+    "**/@blueprintjs/core": "3.28.0",
+    "**/@lumino/coreutils": "1.5.0",
+    "**/@types/react": "16.9.16",
+    "**/@types/react-dom": "16.9.4",
+    "**/react": "16.9.0",
+    "**/react-dom": "16.9.0",
+    "**/typescript": "beta",
+    "**/webpack-dev-server": "3.11.0",
+    "**/html-webpack-plugin": "4.3.0",
+    "**/webpack": "5.0.0-beta.16",
+    "**/webpack-cli": "git://github.com/webpack/webpack-cli.git#master"
+  },
+  "resolutions-wp4": {
+    "**/webpack": "4.43.0",
+    "**/webpack-cli": "3.3.11"
+  },
+  "resolutions-wp5": {
+    "**/webpack": "5.0.0-beta.16",
+    "**/webpack-cli": "git://github.com/webpack/webpack-cli.git#master"
+  }
+}

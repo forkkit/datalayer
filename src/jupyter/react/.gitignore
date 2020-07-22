@@ -1,0 +1,28 @@
+# Copyright (c) Datalayer https://datalayer.io
+# Distributed under the terms of the Apache License, Version 2.0
+# https://www.apache.org/licenses/LICENSE-2.0.txt
+
+# Check with git check-ignore -v **/*
+
+# Exclude.
+**/.*
+**/*.log
+**/build
+**/lib
+**/node_modules
+**/tsconfig.tsbuildinfo
+**/yarn.lock
+
+# Include.
+!**/.*ignore
+!**/.*rc
+!**/.*rc.js
+!**/.*config
+!**/.github
+!**/.storybook
+!**/.vscode
+!.env
+!.gitattributes
+
+# Rexclude
+**/.storybook/dist

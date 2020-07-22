@@ -1,0 +1,14 @@
+iam:
+  imagePullPolicy: Always
+  clusterType: "eks"
+  env:
+    DLAHOST: "alpha.datalayer.io"
+    DLA_IAM_ROOT_URL: "https://alpha.datalayer.io"
+    DLA_IAM_AUTH_CALLBACK: "https://alpha.datalayer.io/api/iam/oidc_callback"
+    DLA_IAM_UI_REDIRECT: "https://alpha.datalayer.io/home"
+    DLA_IAM_JOIN_SUCCESS: "https://alpha.datalayer.io/join/welcome"
+    DLA_IAM_JOIN_ERROR: "https://alpha.datalayer.io/join/error"
+    DLA_IAM_PASSWORD_SUCCESS: "https://alpha.datalayer.io/forgotpassword/welcome"
+    DLA_IAM_PASSWORD_ERROR: "https://alpha.datalayer.io/forgotpassword/error"
+    DLA_LDAP_HOST: "dla-ldap-openldap"
+    DLA_KEYCLOAK_SCHEME_HOST: "https://alpha.datalayer.io"

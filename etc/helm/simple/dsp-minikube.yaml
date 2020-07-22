@@ -1,0 +1,3 @@
+simple:
+  ingress: false
+  cert: false

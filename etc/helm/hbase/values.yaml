@@ -1,0 +1,29 @@
+# The base hadoop image to use for all components.
+# See this repo for image build details: https://github.com/Comcast/kube-yarn/tree/master/image
+imagePullPolicy: IfNotPresent
+hbaseImage: datalayer/hbase:1.4.13
+hbaseVersion: 1.3.1
+# The version of the hadoop libraries being used in the image.
+hadoopVersion: 3.2.1
+# Select anitAffinity as either hard or soft, default is hard
+antiAffinity: "soft"
+hbase:
+  master:
+    resources:
+      requests:
+        memory: "256Mi"
+        cpu: "10m"
+      limits:
+        memory: "2048Mi"
+        cpu: "1000m"
+  regionServer:
+    replicas: 3
+    resources:
+      requests:
+        memory: "256Mi"
+        cpu: "10m"
+      limits:
+        memory: "2048Mi"
+        cpu: "1000m"
+  zookeeper:
+    quorum: "dla-zookeeper.dla-hbase"

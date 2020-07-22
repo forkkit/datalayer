@@ -1,0 +1,87 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: hbase-config
+  labels:
+    app: {{ template "hbase.name" . }}
+    chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+data:
+  hbase-site.xml: |
+    <configuration>
+      <property>
+        <name>hbase.master</name>
+        <value>{{ template "hbase.name" . }}-hbase-master:16000</value>
+      </property>
+      <property>
+        <name>zookeeper.znode.parent</name>
+        <value>/hbase</value>
+      </property>
+      <property>
+        <name>hbase.rootdir</name>
+        <value>hdfs://dla-hdfs-hdfs-hdfs-nn-0.dla-hdfs-hdfs-hdfs-nn.dla-hdfs.svc.cluster.local:9000/hbase</value>
+      </property>
+      <property>
+        <name>hbase.cluster.distributed</name>
+        <value>true</value>
+      </property>
+      <property>
+        <name>hbase.zookeeper.quorum</name>
+        <value>{{ .Values.hbase.zookeeper.quorum }}</value>
+      </property>
+      <!--
+      <property>
+        <name>hbase.zookeeper.property.clientPort</name>
+        <value>2181</value>
+      </property>
+      -->
+      <property>
+        <name>hbase.unsafe.stream.capability.enforce</name>
+        <value>false</value>
+      </property>
+      <property>
+        <name>hbase.defaults.for.version.skip</name>
+        <value>true</value>
+      </property>
+      <property>
+        <name>hbase.defaults.for.version.skip</name>
+        <value>true</value>
+      </property>
+    </configuration>
+
+  bootstrap.sh: |
+    #!/bin/bash
+
+    : ${HADOOP_HOME:=/usr/local/hadoop}
+
+    . $HADOOP_HOME/etc/hadoop/hadoop-env.sh
+
+    # Directory to find config artifacts
+    CONFIG_DIR="/etc/hbase"
+
+    # Copy config files from volume mount
+
+    for f in hbase-site.xml; do
+      if [[ -e ${CONFIG_DIR}/$f ]]; then
+        cp ${CONFIG_DIR}/$f /opt/hbase/conf/$f
+      else
+        echo "ERROR: Could not find $f in $CONFIG_DIR"
+        exit 1
+      fi
+    done
+
+    # installing libraries if any - (resource urls added comma separated to the ACP system variable)
+    cd $HADOOP_HOME/share/hadoop/common ; for cp in ${ACP//,/ }; do  echo == $cp; curl -LO $cp ; done; cd -
+
+    if [[ "${HOSTNAME}" =~ "hbase-master" ]]; then
+      /opt/hbase/bin/hbase-daemon.sh --config /opt/hbase/conf start master
+      # /opt/hbase/bin/hbase-daemon.sh --config /opt/hbase/conf start thrift2
+      /opt/hbase/bin/hbase-daemon.sh --config /opt/hbase/conf start thrift
+    fi
+
+    if [[ "${HOSTNAME}" =~ "hbase-rs" ]]; then
+      /opt/hbase/bin/hbase-daemon.sh --config /opt/hbase/conf start regionserver
+    fi
+
+    tail -f /opt/hbase/logs/*

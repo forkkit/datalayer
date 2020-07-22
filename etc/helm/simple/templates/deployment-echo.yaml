@@ -1,0 +1,20 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: simple-echo
+  namespace: {{ .Values.namespace }}
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: simple-echo
+    spec:
+      containers:
+        - name: simple-echo
+          image: hashicorp/http-echo
+          args:
+            - "-text=hello simple-echo"
+          ports:
+            - containerPort: 5678
+              protocol: TCP

@@ -1,0 +1,444 @@
+#!/usr/bin/env bash
+
+# Copyright (c) Datalayer https://datalayer.io
+# Distributed under the terms of the Apache License, Version 2.0
+# https://www.apache.org/licenses/LICENSE-2.0.txt
+
+echo -e $BOLD$YELLOW"Deploying Datalayer DSP on K8S"$NOCOLOR$NOBOLD
+echo
+
+CLUSTER_TYPE=$1
+
+function config() {
+  export RELEASE=dla-config
+  export NAMESPACE=dla-config
+  helm upgrade \
+    --install $RELEASE \
+    $DLAHOME/etc/helm/config \
+    --namespace $NAMESPACE \
+    --values $DLAHOME/etc/helm/config/dsp-$CLUSTER_TYPE.yaml \
+    --set config.DLA_IAM_AUTH_CALLBACK=${DLA_IAM_AUTH_CALLBACK} \
+    --set config.DLA_STUDIO_INDEX_PAGE=${DLA_STUDIO_INDEX_PAGE=} \
+    --timeout 99999
+}
+
+function secret() {
+  export RELEASE=dla-secret
+  export NAMESPACE=dla-secret
+  helm upgrade \
+    --install $RELEASE \
+    $DLAHOME/etc/helm/secret \
+    --namespace $NAMESPACE \
+    --values $DLAHOME/etc/helm/secret/dsp-$CLUSTER_TYPE.yaml \
+    --set secret.DLA_JWT_SECRET=${DLA_JWT_SECRET} \
+    --set secret.DLA_LDAP_BIND_PWD=${DLA_LDAP_BIND_PWD} \
+    --timeout 99999
+}
+
+function k8s-dashboard() {
+  export RELEASE=k8s-dashboard
+  export NAMESPACE=kube-system
+  helm upgrade \
+    --install $RELEASE \
+    $DLAHOME/etc/helm/k8s-dashboard \
+    --namespace $NAMESPACE \
+    --timeout 99999
+}
+
+function ingress() {
+  export RELEASE=dla-ingress
+  export NAMESPACE=dla-ingress
+  helm install ingress \
+    --install $RELEASE \
+    stable/nginx-ingress \
+    --namespace $NAMESPACE \
+    --values $DLAHOME/etc/helm/ingress/dsp-$CLUSTER_TYPE.yaml \
+    --timeout 99999
+}
+
+function etcd() {
+  helm install \
+    etcd \
+    --set StorageClass=gp2 \
+    -n etcd
+}
+
+function hdfs() {
+  helm install \
+    hdfs \
+    --set imagePullPolicy=Always \
+    --set persistence.nameNode.enabled=true \
+    --set persistence.nameNode.storageClass=gp2 \
+    --set persistence.dataNode.enabled=true \
+    --set persistence.dataNode.storageClass=gp2 \
+    --set hdfs.dataNode.replicas=3 \
+    -n hdfs
+}
+
+function spark() {
+  helm install \
+    spark \
+    --set spark.imagePullPolicy=Always \
+    -n spark
+}
+
+function simple() {
+  export RELEASE=dla-simple
+  export NAMESPACE=dla-simple
+  helm upgrade \
+    --install $RELEASE \
+    $DLAHOME/etc/helm/simple \
+    --namespace $NAMESPACE \
+    --values $DLAHOME/etc/helm/simple/dsp-$CLUSTER_TYPE.yaml \
+    --set secret.DLA_LDAP_BIND_PWD=${DLA_LDAP_BIND_PWD} \
+    --timeout 99999
+}
+
+function kuber() {
+  export RELEASE=dla-kuber
+  export NAMESPACE=dla-kuber
+  helm upgrade \
+    --install $RELEASE \
+    $DLAHOME/etc/helm/kuber \
+    --namespace $NAMESPACE \
+    --values $DLAHOME/etc/helm/kuber/dsp-$CLUSTER_TYPE.yaml \
+    --timeout 99999
+}
+
+function ldap() {
+  export RELEASE=dla-ldap
+  export NAMESPACE=dla-ldap
+  helm upgrade \
+    --install $RELEASE \
+    $DLAHOME/etc/helm/ldap \
+    --namespace $NAMESPACE \
+    --timeout 99999 \
+    --values $DLAHOME/etc/helm/ldap/dsp-$CLUSTER_TYPE.yaml \
+    --set openldap.adminPassword=${DLA_LDAP_BIND_PWD} \
+    --set openldap.configPassword=${DLA_LDAP_BIND_PWD}
+}
+
+function ldapadmin() {
+  export RELEASE=dla-ldapadmin
+  export NAMESPACE=dla-ldap
+  helm upgrade \
+    --install $RELEASE \
+    $DLAHOME/etc/helm/ldapadmin \
+    --namespace $NAMESPACE \
+    --values $DLAHOME/etc/helm/ldapadmin/dsp-$CLUSTER_TYPE.yaml \
+    --timeout 99999
+}
+
+function keycloak() {
+  export RELEASE=dla-keycloak
+  export NAMESPACE=dla-keycloak
+#    $DLAHOME/etc/helm/keycloak \
+  helm upgrade \
+    --install $RELEASE \
+    codecentric/keycloak \
+    --namespace $NAMESPACE \
+    --values $DLAHOME/etc/helm/keycloak/dsp-$CLUSTER_TYPE.yaml \
+    --set keycloak.persistence.dbPassword=${DLA_KEYCLOAK_DB_PWD} \
+    --set keycloak.postgresql.postgresqlPassword=${DLA_KEYCLOAK_DB_PWD} \
+    --set keycloak.password=${DLA_KEYCLOAK_PWD} \
+    --timeout 99999
+}
+
+function iam() {
+  export RELEASE=dla-iam
+  export NAMESPACE=dla-iam
+  helm upgrade \
+    --install $RELEASE \
+    $DLAHOME/etc/helm/iam \
+    --namespace $NAMESPACE \
+    --values $DLAHOME/etc/helm/iam/dsp-$CLUSTER_TYPE.yaml \
+    --set iam.env.DLA_SMTP_HOST="${DLA_SMTP_HOST}" \
+    --set iam.env.DLA_SMTP_PORT="${DLA_SMTP_PORT}" \
+    --set iam.env.DLA_SMTP_USERNAME="${DLA_SMTP_USERNAME}" \
+    --set iam.env.DLA_SMTP_PASSWORD="${DLA_SMTP_PASSWORD}" \
+    --set iam.env.DLA_LDAP_BIND="${DLA_LDAP_BIND}" \
+    --set iam.env.DLA_LDAP_BIND_PWD="${DLA_LDAP_BIND_PWD}" \
+    --set iam.env.DLA_KEYCLOAK_REALM_CLIENT_SECRET="${DLA_KEYCLOAK_REALM_CLIENT_SECRET}" \
+#   -s auth.=
+    --timeout 99999
+}
+
+function solr() {
+  export RELEASE=dla-solr
+  export NAMESPACE=dla-solr
+  helm upgrade \
+    --install $RELEASE \
+    $DLAHOME/etc/helm/solr \
+    --namespace $NAMESPACE \
+    --values $DLAHOME/etc/helm/solr/dsp-$CLUSTER_TYPE.yaml \
+    --timeout 99999
+}
+
+function library() {
+  export RELEASE=dla-library
+  export NAMESPACE=dla-library
+  helm upgrade \
+    --install $RELEASE \
+    $DLAHOME/etc/helm/library \
+    --namespace $NAMESPACE \
+    --values $DLAHOME/etc/helm/library/dsp-$CLUSTER_TYPE.yaml \
+    --set library.env.DLA_KEYCLOAK_REALM_CLIENT_SECRET="${DLA_KEYCLOAK_REALM_CLIENT_SECRET}" \
+    --timeout 99999
+}
+
+function jupyterhub() {
+  export RELEASE=dla-jupyterhub
+  export NAMESPACE=dla-jupyterhub
+  helm upgrade \
+    --install $RELEASE \
+    jupyterhub/jupyterhub  \
+    --namespace $NAMESPACE \
+    --version 0.9.0 \
+    --values $DLAHOME/etc/helm/jupyterhub/dsp-$CLUSTER_TYPE.yaml \
+    --set hub.db.password=${DLA_JUPYTERHUB_DB_PWD} \
+    --set hub.extraEnv.JUPYTERHUB_CRYPT_KEY=${JUPYTERHUB_CRYPT_KEY} \
+    --set hub.extraEnv.DLA_KEYCLOAK_REALM_CLIENT_SECRET="${DLA_KEYCLOAK_REALM_CLIENT_SECRET}" \
+    --set hub.extraEnv.DLA_TWITTER_CONSUMER_KEY=${DLA_TWITTER_CONSUMER_KEY} \
+    --set hub.extraEnv.DLA_TWITTER_CONSUMER_SECRET=${DLA_TWITTER_CONSUMER_SECRET} \
+    --set singleuser.extraEnv.DLA_GITHUB_TOKEN=${DLA_GITHUB_TOKEN} \
+    --set singleuser.extraEnv.DLA_TWITTER_CONSUMER_KEY=${DLA_TWITTER_CONSUMER_KEY} \
+    --set singleuser.extraEnv.DLA_TWITTER_CONSUMER_SECRET=${DLA_TWITTER_CONSUMER_SECRET} \
+    --timeout 99999
+}
+
+function minio() {
+  export RELEASE=dla-minio
+  export NAMESPACE=dla-minio
+  helm upgrade \
+    --install $RELEASE \
+    stable/minio \
+    --namespace $NAMESPACE \
+    --values $DLAHOME/etc/helm/minio/dsp-$CLUSTER_TYPE.yaml \
+    --set accessKey=${DLA_MINIO_ACCESS_KEY} \
+    --set secretKey=${DLA_MINIO_SECRET_KEY} \
+    --timeout 99999
+}
+
+function studio() {
+  export RELEASE=dla-studio
+  export NAMESPACE=dla-studio
+  helm upgrade \
+    --install $RELEASE \
+    $DLAHOME/etc/helm/studio \
+    --namespace $NAMESPACE \
+    --values $DLAHOME/etc/helm/studio/dsp-$CLUSTER_TYPE.yaml \
+    --set studio.env.DLA_STUDIO_INDEX_PAGE=${DLA_STUDIO_INDEX_PAGE} \
+    --timeout 99999
+}
+
+function studio_deprecated() {
+  helm install \
+    studio \
+    --set studio.hostNetwork=false \
+    --set studio.imagePullPolicy=Always \
+    --set studio.notebookRepo=https://github.com/datalayer/notebook-init.git \
+    -n studio
+  cat << EOF | kubectl apply -f -
+apiVersion: v1
+kind: Service
+metadata:
+  name: studio-lb
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+    targetPort: 8080
+  selector:
+    app: studio
+    release: studio
+EOF
+  cat << EOF | kubectl apply -f -
+apiVersion: v1
+kind: Service
+metadata:
+  name: studio-spark-ui-lb
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+    targetPort: 4040
+  selector:
+    app: studio
+    release: studio
+EOF
+  echo """
+# Check HDFS
+  kubectl exec -it hdfs-hdfs-hdfs-nn-0 -- hdfs dfsadmin -report
+# Browse Studio
+  http://localhost:8001/api/v1/namespaces/default/services/http:studio-studio:8080/proxy
+"
+# ---
+  echo "
+# Before running the next step, check the LoadBalancer Ingress value for \`studio-lb\` (rerun in a few minutes if no hostname is shown)
+   kubectl describe services studio-lb | grep Ingress
+"
+  kubectl describe services studio-lb
+  echo
+  kubectl describe services studio-lb | grep Ingress
+  echo
+  echo "Please enter the hostname created for the studio-lb:"
+  read EXPLORER_LB_HOSTNAME
+  echo
+  echo "You entered: $STUDIO_LB_HOSTNAME"
+  echo
+  echo "We will now deploy Studio..."
+  echo
+  helm install \
+    --set studio.hostNetwork=false \
+    --set studio.imagePullPolicy="Always" \
+    --set google.apiKey="$DLA_GOOGLE_API_KEY" \
+    --set google.clientId="$DLA_GOOGLE_CLIENT_ID" \
+    --set google.redirect="" \
+    --set google.secret="$DLA_GOOGLE_SECRET" \
+    --set google.scope="profile email https://www.googleapis.com/auth/contacts.readonly https://www.googleapis.com/auth/user.emails.read" \
+    --set hdfs="" \
+    --set kuber.insecureBindAddress="0.0.0.0" \
+    --set kuber.insecurePort="9091" \
+    --set kuber.manageReservations="true" \
+    --set kuber.rest="" \
+    --set kuber.ui="" \
+    --set kuber.ws="" \
+    --set microsoft.applicationId="$DLA_MICROSOFT_APPLICATION_ID" \
+    --set microsoft.redirect="" \
+    --set microsoft.secret="$DLA_MICROSOFT_SECRET" \
+    --set microsoft.scope="User.ReadBasic.All" \
+    --set studio.rest="http://$STUDIO_LB_HOSTNAME" \
+    --set studio.ws="ws://$EXPLORER_LB_HOSTNAME" \
+    --set twitter.consumerKey="$DLA_TWITTER_CONSUMER_KEY" \
+    --set twitter.consumerSecret="$DLA_TWITTER_CONSUMER_SECRET" \
+    --set twitter.redirect="" \
+    studio \
+    -n studio
+  cat << EOF | kubectl apply -f -
+apiVersion: v1
+kind: Service
+metadata:
+  name: studio-lb
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-connection-idle-timeout: 3600
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+    targetPort: 9091
+  selector:
+    app: studio
+    release: studio
+EOF
+  echo "
+# Check the LoadBalancer Ingress value for \`studio-lb\` (rerun in a few minutes if no hostname is shown)
+   kubectl describe services studio-lb | grep Ingress
+"
+  kubectl describe services studio-lb
+  echo
+  kubectl describe services studio-lb | grep Ingress
+  echo
+}
+
+function commands() {
+  echo -e $YELLOW"💛  Valid commands: [ simple | config | secret | ingress | k8s-dashboard | kuber | ldap | ldapadmin | keycloak | iam | solr | library | jupyterhub | minio | studio ]"$NOCOLOR 1>&2
+}
+
+CMDS="$2"
+
+if [ -z "$CMDS" ]; then
+  echo -e $RED$BOLD"💔  No command to execute has been provided."$NOCOLOR$NOBOLD 1>&2
+  echo
+  commands
+  echo
+  exit 1
+fi
+
+# TODO see https://stackoverflow.com/questions/33387263/invoke-function-whose-name-is-stored-in-a-variable-in-bash
+# TODO see https://stackoverflow.com/questions/17529220/why-should-eval-be-avoided-in-bash-and-what-should-i-use-instead/17529221#17529221
+function apply_cmd() {
+
+  echo -e $BOLD"🔥  Deploying service [$BLUE$1$NOCOLOR]."$NOBOLD
+  echo
+
+  case "$1" in
+
+    simple)
+      simple
+      ;;
+
+    config)
+      config
+      ;;
+
+    secret)
+      secret
+      ;;
+
+    k8s-dashboard)
+      k8s-dashboard
+      ;;
+
+    kuber)
+      kuber
+      ;;
+
+    ldap)
+      ldap
+      ;;
+
+    ldapadmin)
+      ldapadmin
+      ;;
+
+    keycloak)
+      keycloak
+      ;;
+
+    iam)
+      iam
+      ;;
+
+    solr)
+      solr
+      ;;
+
+    ingress)
+      ingress
+      ;;
+
+    library)
+      library
+      ;;
+
+    jupyterhub)
+      jupyterhub
+      ;;
+
+    minio)
+      minio
+      ;;
+
+    studio)
+      studio
+      ;;
+
+    *)
+      echo -e $RED$BOLD"💔  Unknown command: $1"$NOBOLD$NOCOLOR 1>&2
+      echo
+      commands
+      echo
+      exit 1
+
+  esac
+
+  echo
+  echo -e $BOLD"✅  Service [$BLUE$1$NOCOLOR] is deployed."$NOBOLD
+  echo
+
+}
+
+IFS=',' read -ra CMD_SPLITS <<< "$CMDS"
+for i in "${CMD_SPLITS[@]}"; do
+  apply_cmd $i
+done

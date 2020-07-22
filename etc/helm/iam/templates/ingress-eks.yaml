@@ -1,0 +1,25 @@
+{{ if eq .Values.iam.clusterType "eks" -}}
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: iam-ingress
+  annotations:
+    kubernetes.io/ingress.class: 'nginx'
+    nginx.ingress.kubernetes.io/ssl-redirect: 'true'
+    nginx.ingress.kubernetes.io/force-ssl-redirect: 'true'
+    cert-manager.io/acme-challenge-type: 'http01'
+    cert-manager.io/cluster-issuer: 'letsencrypt-prod'
+spec:
+  tls:
+  - hosts:
+    - alpha.datalayer.io
+    secretName: iam-datalayer-io-cert
+  rules:
+  - host: alpha.datalayer.io
+    http:
+      paths:
+      - path: /api/iam
+        backend:
+          serviceName: {{ .Release.Name }}-iam-svc
+          servicePort: {{ .Values.iam.port }}
+{{- end }}

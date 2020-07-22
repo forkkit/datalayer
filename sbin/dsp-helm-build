@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+# Copyright (c) Datalayer https://datalayer.io
+# Distributed under the terms of the Apache License, Version 2.0
+# https://www.apache.org/licenses/LICENSE-2.0.txt
+
+echo -e $BOLD$YELLOW"Building Datalayer DSP Helm Charts"$NOCOLOR$NOBOLD
+echo
+
+function build_helm_chart() {
+  echo -e $YELLOW"Building Datalayer DSP Helm Charts "$1$NOCOLOR
+  helm dependency build $DLAHOME/etc/helm/$1
+}
+
+CMDS="$1"
+
+if [ -z "$CMDS" ]; then
+  CMDS='k8s-dashboard,ldap,keycloak,solr'
+fi
+
+IFS=',' read -ra CMD_SPLITS <<< "$CMDS"
+for i in "${CMD_SPLITS[@]}"; do
+  build_helm_chart $i
+  echo
+done

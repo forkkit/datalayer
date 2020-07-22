@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+# Copyright (c) Datalayer https://datalayer.io
+# Distributed under the terms of the Apache License, Version 2.0
+# https://www.apache.org/licenses/LICENSE-2.0.txt
+
+echo -e $BOLD$YELLOW"Datalayer HDFS Status"$NOCOLOR$NOBOLD
+echo
+
+echo -e $BOLD$GREEN"VERSION"$NOCOLOR$NOBOLD
+$HADOOP_HOME/bin/hdfs version
+echo
+echo -e $BOLD$GREEN"CONTENT"$NOCOLOR$NOBOLD
+$HADOOP_HOME/bin/hdfs dfs -ls /
+echo
+echo -e $BOLD$GREEN"USAGE"$NOCOLOR$NOBOLD
+$HADOOP_HOME/bin/hdfs dfs -du -h /
+echo
+echo -e $BOLD$GREEN"NATIVE"$NOCOLOR$NOBOLD
+$HADOOP_HOME/bin/hadoop checknative -a

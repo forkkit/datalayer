@@ -1,0 +1,4 @@
+studio:
+  clusterType: "minikube"
+  env:
+    DLAHOST: "minikube.datalayer.io.local"
