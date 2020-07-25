@@ -65,7 +65,9 @@ install_on_macos() {
       cd hyperkit && \
       make && \
       cp ./build/hyperkit /usr/local/bin/hyperkit && \
-      chmod +x /usr/local/bin/hyperkit
+      chmod +x /usr/local/bin/hyperkit && \
+      cd .. && \
+      rm -fr hyperkit
 
     echo -e "Installing minikube ${MINIKUBE_VERSION} into /usr/local/bin"
     echo
