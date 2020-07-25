@@ -40,9 +40,9 @@ cd $DLAHOME/src && \
 To get used to the source architecture and libraries, have a look at the [examples](./packages/examples).
 
 ```bash
-# open http://localhost:3101 # Simple Example
+# open http://localhost:3101             # Simple Example
 # open http://localhost:3002/api/widgets # Widgets
-# open http://localhost:3009 # Utils
+# open http://localhost:3009             # Utils
 cd $DLAHOME/src && \
   yarn start:example-simple
 ```
@@ -56,12 +56,9 @@ cd $DLAHOME/src && \
   yarn start:example-extension
 ```
 
-## DSP
+## DSP IAM
 
 ```bash
-# open http://localhost:3003/api/studio          # Studio
-# open http://localhost:9600/api/studio          # Studio Server
-# open http://localhost:9600/api/studio/version  # Studio Server
 # open http://localhost:3001/api/iam             # IAM
 # open http://localhost:3001/api/iam/home        # IAM
 # open http://localhost:3001/api/iam/me          # IAM
@@ -70,14 +67,16 @@ cd $DLAHOME/src && \
 # open http://localhost:9700/api/iam/version     # IAM Server
 # open http://localhost:3002/api/widgets         # Widgets
 # open http://localhost:3009                     # Utils
-```
-
-```bash
 cd $DLAHOME/src && \
   yarn start:iam
 ```
 
+## DSP Studio
+
 ```bash
+# open http://localhost:3003/api/studio          # Studio
+# open http://localhost:9600/api/studio          # Studio Server
+# open http://localhost:9600/api/studio/version  # Studio Server
 cd $DLAHOME/src && \
   yarn start:studio
 ```
