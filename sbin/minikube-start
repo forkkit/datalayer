@@ -7,10 +7,7 @@
 echo -e $BOLD$YELLOW"Starting Minikube"$NOCOLOR$NOBOLD
 echo
 
-# export K8S_VERSION=v1.16.0
-export K8S_VERSION=v1.15.0
-
-minikube config set kubernetes-version ${K8S_VERSION}
+minikube config set kubernetes-version ${DLA_K8S_VERSION}
 minikube config set bootstrapper kubeadm
 minikube config set cpus 8
 minikube config set memory 10192

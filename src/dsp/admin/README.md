@@ -31,6 +31,7 @@ dsp iam import-users
 ```bash
 # List users.
 dsp iam list-users
+dsp iam list-users -q id:eric
 ```
 
 ```bash
