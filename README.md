@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://datalayer.io">
-    <img alt="Datalayer" src="https://raw.githubusercontent.com/datalayer/datalayer/master/res/logo/datalayer-square.png" width="60" />
+    <img alt="Datalayer" src="https://raw.githubusercontent.com/datalayer/datalayer/main/res/logo/datalayer-square.png" width="60" />
   </a>
   <h1 align="center">Datalayer</h1>
   <div align="center"/>Reproducible Data Papers</div>
