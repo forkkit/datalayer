@@ -95,11 +95,14 @@ jupyterhub-spawn-systemd|https://github.com/datalayer-contrib/jupyterhub-spawn-s
 jupyterhub-spawn-wrap|https://github.com/datalayer-contrib/jupyterhub-spawn-wrap.git|https://github.com/jupyterhub/wrapspawner.git|master \
 jupyterhub-tutorial|https://github.com/datalayer-contrib/jupyterhub-tutorial.git|https://github.com/jupyterhub/jupyterhub-tutorial.git|master \
 jupyterlab|https://github.com/datalayer-contrib/jupyterlab.git|https://github.com/jupyterlab/jupyterlab.git|master \
-jupyterlab-benchmarks|https://github.com/datalayer-contrib/jupyterlab-benchmarks.git|https://github.com/jupyterlab/jupyterlab-benchmarks.git|master \
+jupyterlab-benchmarks|https://github.com/datalayer-contrib/jupyterlab-benchmarks.git|https://github.com/jupyterlab/benchmarks.git|master \
+jupyterlab-code-snippets|https://github.com/datalayer-contrib/jupyterlab-code-snippets.git|https://github.com/jupytercalpoly/jupyterlab-code-snippets.git|master \
 jupyterlab-commenting|https://github.com/datalayer-contrib/jupyterlab-commenting.git|https://github.com/jupyterlab/jupyterlab-commenting.git|master \
 jupyterlab-cookiecutter-extension|https://github.com/datalayer-contrib/jupyterlab-cookiecutter-extension.git|https://github.com/jupyterlab/extension-cookiecutter-ts.git|master \
 jupyterlab-cookiecutter-mimerender|https://github.com/datalayer-contrib/jupyterlab-cookiecutter-mimerender.git|https://github.com/jupyterlab/mimerender-cookiecutter-ts.git|master \
+jupyterlab-dashboard-editor|https://github.com/datalayer-contrib/jupyterlab-dashboard-editor.git|https://github.com/jupytercalpoly/jupyterlab-interactive-dashboard-editor.git|master \
 jupyterlab-dat|https://github.com/datalayer-contrib/jupyterlab-dat.git|https://github.com/deathbeds/jupyterlab-dat.git|master \
+jupyterlab-data-editor|https://github.com/datalayer-contrib/jupyterlab-data-editor.git|https://github.com/jupytercalpoly/jupyterlab-tabular-data-editor.git|master \
 jupyterlab-data-explorer|https://github.com/datalayer-contrib/jupyterlab-data-explorer.git|https://github.com/jupyterlab/jupyterlab-data-explorer.git|master \
 jupyterlab-demo|https://github.com/datalayer-contrib/jupyterlab-demo.git|https://github.com/jupyterlab/jupyterlab-demo.git|master \
 jupyterlab-drawio|https://github.com/datalayer-contrib/jupyterlab-drawio.git|https://github.com/quantstack/jupyterlab-drawio.git|master \
