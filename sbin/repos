@@ -70,6 +70,7 @@ jupyter-proxy-server|https://github.com/datalayer-contrib/jupyter-proxy-server.g
 jupyter-pyzmq|https://github.com/datalayer-contrib/jupyter-pyzmq.git|https://github.com/zeromq/pyzmq.git|master \
 jupyter-qtconsole|https://github.com/datalayer-contrib/jupyter-qtconsole.git|https://github.com/jupyter/qtconsole.git|master \
 jupyter-report|https://github.com/datalayer-contrib/jupyter-report.git|https://github.com/choldgraf/nbreport.git|master \
+jupyter-rtc|https://github.com/datalayer-contrib/jupyter-rtc.git|https://github.com/jupyterlab/rtc.git|main \
 jupyter-server|https://github.com/datalayer-contrib/jupyter-server.git|https://github.com/jupyter/jupyter_server.git|master \
 jupyter-server-2gw|https://github.com/datalayer-contrib/jupyter-server-2gw.git|https://github.com/jupyter/nb2kg.git|master \
 jupyter-traitlets|https://github.com/datalayer-contrib/jupyter-traitlets.git|https://github.com/ipython/traitlets.git|master \
@@ -122,7 +123,6 @@ jupyterlab-phoila|https://github.com/datalayer-contrib/jupyterlab-phoila.git|htt
 jupyterlab-pixiedust|https://github.com/datalayer-contrib/jupyterlab-pixiedust.git|https://github.com/pixiedust/pixiedust.git|master \
 jupyterlab-renderer-module|https://github.com/datalayer-contrib/jupyterlab-renderer-module.git|https://github.com/blois/js-module-renderer.git|master \
 jupyterlab-renderers|https://github.com/datalayer-contrib/jupyterlab-renderers.git|https://github.com/jupyterlab/jupyter-renderers.git|master \
-jupyterlab-rtc|https://github.com/datalayer-contrib/jupyterlab-rtc.git|https://github.com/jupyterlab/rtc.git|main \
 jupyterlab-server|https://github.com/datalayer-contrib/jupyterlab-server.git|https://github.com/jupyterlab/jupyterlab_server.git|master \
 jupyterlab-simplest|https://github.com/datalayer-contrib/jupyterlab-simplest.git|https://github.com/yuvipanda/simplest-notebook.git|master \
 jupyterlab-thebe|https://github.com/datalayer-contrib/jupyterlab-thebe.git|https://github.com/minrk/thebelab.git|master \
