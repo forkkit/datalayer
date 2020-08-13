@@ -109,8 +109,8 @@ export DLA_CLASSPATH=$DLAHOME/lib/*:$DLA_CLASSPATH
 
 export DLA_CLASSPATH_FILE=$DLAHOME/gen/datalayer-classpath.sh
 
-export MAVEN_VERSION=3.5.4
-export MAVEN_HOME=$DLAOPT/apache-maven-$MAVEN_VERSION
+export MAVEN_VERSION=3.6.3
+export MAVEN_HOME=$DLAOPT/apache-maven
 export PATH=$MAVEN_HOME/bin:$PATH
 
 export MAVEN_OPTS="-Xmx8g -Xms2g -XX:ReservedCodeCacheSize=2g"
