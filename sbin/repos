@@ -123,6 +123,7 @@ jupyterlab-phoila|https://github.com/datalayer-contrib/jupyterlab-phoila.git|htt
 jupyterlab-pixiedust|https://github.com/datalayer-contrib/jupyterlab-pixiedust.git|https://github.com/pixiedust/pixiedust.git|master \
 jupyterlab-renderer-module|https://github.com/datalayer-contrib/jupyterlab-renderer-module.git|https://github.com/blois/js-module-renderer.git|master \
 jupyterlab-renderers|https://github.com/datalayer-contrib/jupyterlab-renderers.git|https://github.com/jupyterlab/jupyter-renderers.git|master \
+jupyterlab-rtc-docker-2019|https://github.com/datalayer-contrib/jupyterlab-rtc-docker-2019.git|https://github.com/ellisonbg/jupyterlab-rtc.git|master \
 jupyterlab-server|https://github.com/datalayer-contrib/jupyterlab-server.git|https://github.com/jupyterlab/jupyterlab_server.git|master \
 jupyterlab-simplest|https://github.com/datalayer-contrib/jupyterlab-simplest.git|https://github.com/yuvipanda/simplest-notebook.git|master \
 jupyterlab-thebe|https://github.com/datalayer-contrib/jupyterlab-thebe.git|https://github.com/minrk/thebelab.git|master \
