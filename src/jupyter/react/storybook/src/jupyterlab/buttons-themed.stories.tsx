@@ -9,12 +9,16 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 
 import { Button as JLButton } from '@jupyterlab/ui-components';
 
-import { Spacer, H1 } from './util/Formats';
+import { Spacer, H1 } from './../util/Formats';
 
 import '@jupyterlab/ui-components/style/index.css';
 import '@jupyterlab/theme-light-extension/style/index.css';
 
 import { muiLightTheme } from '@datalayer/jupyter-react-theme-light';
+
+export default {
+  title: 'JupyterLab/Button-Themed',
+};
 
 const buttons = () => (
   <>
@@ -52,5 +56,5 @@ const buttons = () => (
   </>
 );
 
-storiesOf('Widgets', module)
+storiesOf('JupyterLab/Button-Themed', module)
   .add('buttons', buttons);

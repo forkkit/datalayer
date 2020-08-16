@@ -93,7 +93,7 @@ cd $DLAHOME/src && \
   yarn start:studio
 ```
 
-## DSP Storybooks
+## DSP Storybook
 
 ```bash
 # open http://localhost:9009
@@ -101,7 +101,7 @@ cd $DLAHOME/src && \
   yarn storybook:dsp
 ```
 
-## Jupyter Storybooks
+## Jupyter Storybook
 
 ```bash
 # open http://localhost:9001
