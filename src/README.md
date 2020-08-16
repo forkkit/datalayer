@@ -8,7 +8,7 @@
 - [Jupyter](./packages/jupyter)
 - [Kubernetes](./packages/k8s)
 
-## Environmentt
+## Environment
 
 ```bash
 conda deactivate
@@ -48,7 +48,7 @@ cd $DLAHOME/src && \
 
 ## Examples
 
-To get used to the source architecture and libraries, have a look at the [examples](./packages/examples).
+To get used to the source architecture and libraries, have a look at the [examples](./examples) folder.
 
 ```bash
 # open http://localhost:3101             # Simple Example
@@ -92,13 +92,15 @@ cd $DLAHOME/src && \
   yarn start:studio
 ```
 
-## Storybooks
+## DSP Storybooks
 
 ```bash
 # open http://localhost:9009
 cd $DLAHOME/src && \
   yarn storybook:dsp
 ```
+
+## Jupyter Storybooks
 
 ```bash
 # open http://localhost:9001
@@ -108,9 +110,7 @@ cd $DLAHOME/src && \
 
 ## Endpoints
 
-Datalayer provides service endpoints.
-
-For development, install the endpoints on Minikube [following these steps](https://dsp.docs.datalayer.io/install/minikube) until the `keycloak` service included. Don't further deploy the other services as we will run them locally.
+The Datalayer platform provides various service endpoints. For development purposes, install the endpoints on Minikube [following these steps](https://dsp.docs.datalayer.io/install/minikube) until the `keycloak` service included. Don't further deploy the other services as we will run them locally.
 
 | | Endpoint                      |  Description |
 |-|-------------------------------|--------------|
