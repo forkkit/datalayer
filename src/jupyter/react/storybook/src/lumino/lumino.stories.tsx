@@ -5,7 +5,7 @@ import Cmp from './dock/Cmp';
 import Dock from './dock/Dock';
 import DockWidget from './dock/DockWidget';
 
-import HelloOne from './../hello/HelloOne';
+import HelloOne from '@datalayer/jupyter-react-widgets/lib/hello/HelloOne';
 
 export default {
   title: 'Lumino/React',

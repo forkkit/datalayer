@@ -8,6 +8,17 @@
 - [Jupyter](./packages/jupyter)
 - [Kubernetes](./packages/k8s)
 
+## Environmentt
+
+```bash
+conda deactivate
+make env-rm
+make env
+conda activate datalayer
+export PATH=... # copy form the previous outputs
+make env-dev
+```
+
 ## Build Source
 
 ```bash
@@ -90,15 +101,9 @@ cd $DLAHOME/src && \
 ```
 
 ```bash
-# open http://localhost:9009
+# open http://localhost:9001
 cd $DLAHOME/src && \
   yarn storybook:jupyter-react
-```
-
-```bash
-# open http://localhost:9009
-cd $DLAHOME/src && \
-  yarn storybook:jupyter-react-widgets
 ```
 
 ## Endpoints

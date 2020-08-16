@@ -3,6 +3,7 @@ const SRC_PATH = path.join(__dirname, '../src');
 const STORIES_PATH = path.join(__dirname, '../stories');
 
 module.exports = ({ config }) => {
+
   // don't use storybook's default svg configuration
   // https://github.com/storybookjs/storybook/issues/6758
   config.module.rules = config.module.rules.map(rule => {
@@ -32,7 +33,6 @@ module.exports = ({ config }) => {
       { loader: require.resolve('react-docgen-typescript-loader') }
     ]
   });
-
   config.resolve.extensions.push('.ts', '.tsx');
 
   // svg rules
@@ -45,6 +45,7 @@ module.exports = ({ config }) => {
       options: { encoding: 'none', limit: 10000 }
     }
   });
+
   config.module.rules.push({
     // in js, jsx, ts, and tsx files svg is loaded as a raw string
     test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
@@ -53,5 +54,7 @@ module.exports = ({ config }) => {
       loader: 'raw-loader'
     }
   });
+
   return config;
+
 };
