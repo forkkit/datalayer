@@ -56,10 +56,10 @@ const LoginForm = (props: any) => {
       if (resp.success) {
         auth.setAuthStatus(resp.user, resp.token);
 //        enqueueSnackbar(resp.message, { variant: 'success' });
-        props.history.push("/api/iam")
+        props.history.push("/api/iam");
       } else {
-        enqueueSnackbar(resp.message, { variant: 'warning' })
-        resp.errors?.map(error => enqueueSnackbar(error, { variant: 'warning' }));
+        enqueueSnackbar(resp.message, { variant: 'warning' });
+        resp.errors!.map(error => enqueueSnackbar(error, { variant: 'warning' }));
       }
     })
     .catch(err => {

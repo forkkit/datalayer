@@ -14,7 +14,7 @@ import { Spacer, H1 } from './util/Formats';
 import '@jupyterlab/ui-components/style/index.css';
 import '@jupyterlab/theme-light-extension/style/index.css';
 
-import { muiLightTheme } from '@datalayer/jupyter-react-mui-theme-light';
+import { muiLightTheme } from '@datalayer/jupyter-react-theme-light';
 
 const buttons = () => (
   <>

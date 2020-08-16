@@ -47,15 +47,13 @@
     "**/typescript": "beta",
     "**/webpack-dev-server": "3.11.0",
     "**/html-webpack-plugin": "4.3.0",
-    "**/webpack": "4.44.1",
+    "**/webpack": "5.0.0-beta.16",
     "**/webpack-cli": "next"
   },
   "resolutions-wp4": {
-    "**/webpack": "4.44.1",
-    "**/webpack-cli": "3.3.11"
+    "**/webpack": "4.44.1"
   },
   "resolutions-wp5": {
-    "**/webpack": "5.0.0-beta.16",
-    "**/webpack-cli": "next"
+    "**/webpack": "5.0.0-beta.16"
   }
 }

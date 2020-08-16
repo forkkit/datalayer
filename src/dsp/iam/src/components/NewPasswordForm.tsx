@@ -70,7 +70,7 @@ const NewPasswordForm = (props: any) => {
           } else {
 //            showError(resp.errors);
             enqueueSnackbar(resp.message, { variant: 'error' })
-            resp.errors?.map(error => enqueueSnackbar(error, { variant: 'error' }));
+            resp.errors!.map(error => enqueueSnackbar(error, { variant: 'error' }));
           }
         })
         .catch(err => {

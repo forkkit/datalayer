@@ -32,7 +32,7 @@ ui-ls: ## ui-ls
 ui-deps: ## ui-deps
 #	cd jupyter/react/themes/light && yarn build
 # 	cd ./dsp/storybook && yarn install && cd node_modules/\@datalayer && rm -fr widgets && ln -s ./../../../dsp/widgets && cd ./../../ && yarn build
-#	cd ./jupyter/react/storybook && yarn install && cd node_modules && mkdir \@datalayer && cd \@datalayer && ln -s ./../../../themes/light jupyter-react-mui-theme-light && yarn build
+#	cd ./jupyter/react/storybook && yarn install && cd node_modules && mkdir \@datalayer && cd \@datalayer && ln -s ./../../../themes/light jupyter-react-theme-light && yarn build
 #	sed 's|useEslintrc: false|useEslintrc: true|g' node_modules/@react-workspaces/react-scripts/config/webpack.config.js > /tmp/webpack.config.js
 #	mv /tmp/webpack.config.js node_modules/@react-workspaces/react-scripts/config/webpack.config.js
 	yarn install
@@ -67,7 +67,7 @@ build: ## build
 	@exec ./../bin/dla build
 
 clean: ## clean
-	@exec ./../bin/dla clean
+#	@exec ./../bin/dla clean
 
 env-rm: warning ## env-rm
 	conda remove -y --name datalayer --all || true
@@ -97,4 +97,5 @@ init: ## init
 	eval $(DOCKER_ENV)
 	
 install: ## install
-	@exec ./../bin/dla install
+#	@exec ./../bin/dla install
+	yarn install

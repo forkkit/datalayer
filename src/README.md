@@ -31,6 +31,7 @@ cd $DLAHOME/src && \
 # Clean/Install/Build all.
 cd $DLAHOME/src && \
   make clean && \
+  make install && \
   make build
 ```
 

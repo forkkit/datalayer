@@ -36,10 +36,10 @@ const Profile = (props: any) => {
   const [loading, setLoading] = useState(false);
   const [updated, setUpdated] = useState(false);
   const [formContents, setFormContents] = useState({
-    username: me?.username,
-    email: me?.email,
-    firstName: me?.firstName,
-    lastName: me?.lastName
+    username: me!.username,
+    email: me!.email,
+    firstName: me!.firstName,
+    lastName: me!.lastName
   });
   const { handleSubmit, control, reset, errors, triggerValidation, formState, register, setError, clearError } = useForm({
     defaultValues: formContents
@@ -83,7 +83,7 @@ const Profile = (props: any) => {
         } else {
 //          showError(resp.errors);
         enqueueSnackbar(resp.message, { variant: 'error' })
-        resp.errors?.map(error => enqueueSnackbar(error, { variant: 'error' }));
+        resp.errors!.map(error => enqueueSnackbar(error, { variant: 'error' }));
         }
       })
       .catch(err => {
