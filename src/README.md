@@ -15,17 +15,11 @@ conda deactivate
 make env-rm
 make env
 conda activate datalayer
-export PATH=... # copy form the previous outputs
+export PATH=... # copy PATH from the previous outputs
 make env-dev
 ```
 
-## Build Source
-
-```bash
-# Install/Build all.
-cd $DLAHOME/src && \
-  make build
-```
+## Build
 
 ```bash
 # Clean/Install/Build all.
@@ -35,7 +29,15 @@ cd $DLAHOME/src && \
   make build
 ```
 
-> The [dev](./dev) folder contains useful scripts.
+```bash
+# Install/Build all.
+cd $DLAHOME/src && \
+  make build
+```
+
+## Develop
+
+The [dev](./dev) folder contains useful scripts.
 
 ## Forward Ports
 
@@ -68,6 +70,22 @@ cd $DLAHOME/src && \
   yarn start:example-extension
 ```
 
+## DSP Storybook
+
+```bash
+# open http://localhost:9009
+cd $DLAHOME/src && \
+  yarn storybook:dsp
+```
+
+## Jupyter Storybook
+
+```bash
+# open http://localhost:9001
+cd $DLAHOME/src && \
+  yarn storybook:jupyter-react
+```
+
 ## DSP IAM
 
 ```bash
@@ -91,22 +109,6 @@ cd $DLAHOME/src && \
 # open http://localhost:9600/api/studio/version  # Studio Server
 cd $DLAHOME/src && \
   yarn start:studio
-```
-
-## DSP Storybook
-
-```bash
-# open http://localhost:9009
-cd $DLAHOME/src && \
-  yarn storybook:dsp
-```
-
-## Jupyter Storybook
-
-```bash
-# open http://localhost:9001
-cd $DLAHOME/src && \
-  yarn storybook:jupyter-react
 ```
 
 ## Endpoints
