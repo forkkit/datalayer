@@ -1,6 +1,7 @@
 import React from 'react';
-import {DockPanel, Widget} from "@lumino/widgets";
 import {createPortal} from "react-dom";
+
+import {DockPanel, Widget} from "@lumino/widgets";
 
 interface IWidgetInfo {
   component: JSX.Element;

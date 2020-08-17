@@ -1,7 +1,7 @@
 const path = require('path');
 
 const SRC_PATH = path.join(__dirname, '../src');
-const STORIES_PATH = path.join(__dirname, '../stories');
+const STORIES_PATH = path.join(__dirname, '../story');
 
 module.exports = ({ config }) => {
 

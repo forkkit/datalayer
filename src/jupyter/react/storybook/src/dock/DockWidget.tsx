@@ -39,12 +39,11 @@ class MyWidget extends Widget {
 
   onUpdateRequest(msg: any) {
     console.log('widget:onUpdateRequest');    
-//    var data = { model: this._model };
- //   var host = this.node.firstChild;
-    //React.render(React.createElement(app.TodoApp, data), host);
+//  var data = { model: this._model };
+//  var host = this.node.firstChild;
+//  React.render(React.createElement(app.TodoApp, data), host);
   }
 }
-
 
 class ReactDockPanel extends Component<any, any> {
   panel: DockPanel;

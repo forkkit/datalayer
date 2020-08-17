@@ -1,1 +1,1 @@
-export {default as HelloOne} from './hello/HelloOne';
+export {default as HelloOne} from './examples/example1/HelloOne';

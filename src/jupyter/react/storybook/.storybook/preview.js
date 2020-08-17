@@ -9,5 +9,5 @@ addParameters({
 	},
   });
 
-const req = require.context('./../src', true, /.stories.tsx$/);
+const req = require.context('./../src', true, /.story.(tsx|mdx)$/);
 configure(req, module);

@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
+
 import { action } from '@storybook/addon-actions';
 import { Button } from '@storybook/react/demo';
 
 export default {
-  title: 'React/Button',
+  title: 'Buttons/Button2',
   component: Button,
   id: 'react-button-id',
   parameters: {
@@ -29,7 +30,7 @@ export const WithSomeEmoji = () => (
       😀 😎 👍 💯
     </span>
   </Button>
-);
+);  
 WithSomeEmoji.story = {
   name: 'With Emoji',
   parameters: {
@@ -44,7 +45,6 @@ export const WithCounter = () => {
   const label = `Testing: ${counter}`;
   return <Button onClick={() => setCounter(counter + 1)}>{label}</Button>;
 };
-
 WithCounter.story = {
   name: 'With Counter',
   parameters: {

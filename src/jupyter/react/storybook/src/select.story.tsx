@@ -24,7 +24,6 @@ export const SelectStory = () => {
     ]}
   />
 };
-
 SelectStory.story = {
   name: 'Select',
   parameters: {
