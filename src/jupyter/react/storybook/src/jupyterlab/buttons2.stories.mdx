@@ -1,0 +1,19 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+
+import { Button } from '@jupyterlab/ui-components';
+
+<Meta title="JupyterLab/MDX" component={Button} />
+
+# Button
+
+With `MDX` we can define a story for `Button` right in the middle of our Markdown documentation.
+
+<Canvas>
+  <Story name="all buttons">
+    <Button>
+      <span role="img" aria-label="so cool">
+        😀 😎 👍 💯
+      </span>
+    </Button>
+  </Story>
+</Canvas>

@@ -10,7 +10,7 @@ import '@jupyterlab/theme-light-extension/style/index.css';
 import './buttons.css'
 
 export default {
-  title: 'JupyterLab/Button',
+  title: 'JupyterLab/Button'
 };
 
 export const types = () => (
@@ -39,6 +39,11 @@ export const css = () => (
     </Button>
   </>
 );
+
+css.args = {
+  label: 'Hello',
+  onClick: action('clicked'),
+};
 
 export const emoji = () => (
   <Button onClick={action('clicked')}>

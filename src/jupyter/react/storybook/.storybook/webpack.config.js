@@ -1,4 +1,5 @@
 const path = require('path');
+
 const SRC_PATH = path.join(__dirname, '../src');
 const STORIES_PATH = path.join(__dirname, '../stories');
 
@@ -21,6 +22,7 @@ module.exports = ({ config }) => {
   // ts rules
   config.module.rules.push({
     test: /\.(ts|tsx)$/,
+    exclude: /node_modules/,
     // dont need stories path if you have your stories inside your src folder
     include: [SRC_PATH, STORIES_PATH],
     use: [
@@ -33,6 +35,15 @@ module.exports = ({ config }) => {
       { loader: require.resolve('react-docgen-typescript-loader') }
     ]
   });
+
+  // automatically in `DocsPage` or the `Source` doc block.
+  config.module.rules.push({
+    test: /\.(stories|story)\.[tj]sx?$/,
+    exclude: /node_modules/,
+    loader: require.resolve('@storybook/source-loader'),
+    enforce: 'pre',
+  });
+
   config.resolve.extensions.push('.ts', '.tsx');
 
   // svg rules
