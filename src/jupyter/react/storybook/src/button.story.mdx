@@ -1,6 +1,8 @@
 import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
 import { action } from '@storybook/addon-actions';
 
+import { useState } from 'react';
+
 import Button from '@material-ui/core/Button';
 import { ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -9,10 +11,12 @@ import { muiLightTheme } from '@datalayer/jupyter-react-theme-light';
 
 import { Button as JLButton } from '@jupyterlab/ui-components';
 
+import { Button as SButton } from '@storybook/react/demo';
+
 import { Spacer, H1 } from './format/formats';
 import '@jupyterlab/application/style/index.css';
 import '@jupyterlab/theme-light-extension/style/index.css';
-import './format/buttons.css'
+import './format/buttons.css';
 
 <Meta title="Buttons/Button" component={Button} />
 
@@ -21,39 +25,27 @@ import './format/buttons.css'
 This is a story for `Button` right in the middle of our Markdown documentation.
 
 <Canvas>
-  <Story name="buttons types ">
+  <Story name="Buttons Types ">
     <Button variant="outlined" onClick={action('clicked')}>Default</Button>
-    <Button variant="outlined" color="primary" title="Submit" onClick={action('clicked')}>Primary</Button>
-    <Button variant="outlined" color="secondary" title="Reset" onClick={action('clicked')} >Secondary</Button>
-  </Story>
-</Canvas>
-
-Emoji Buttons.
-
-<Canvas>
-  <Story name="emoji buttons">
-    <Button>
-      <span role="img" aria-label="so cool">
-        😀 😎 👍 💯
-      </span>
-    </Button>
+    <Button variant="outlined" color="primary" onClick={action('clicked')}>Primary</Button>
+    <Button variant="outlined" color="secondary" onClick={action('clicked')} >Secondary</Button>
   </Story>
 </Canvas>
 
 Buttons with CSS.
 
 <Canvas>
-  <Story name="with css">
-    <Button 
+  <Story name="CSS">
+    <Button
       type="button"
-      className='Button-Color'
+      className='Button-Color Button-Background'
       title="A Button with CSS"
       onClick={action('clicked')}>
         With CSS
     </Button>
-    <Button 
+    <Button
       type="button"
-      className='Button-Color Button-Background'
+      className='Button-Color'
       title="A Button with more CSS"
       onClick={action('clicked')}>
         With more CSS
@@ -64,7 +56,7 @@ Buttons with CSS.
 JupyterLab Themed Buttons.
 
 <Canvas>
-  <Story name="jupyterlab buttons">
+  <Story name="JupyterLab Buttons">
     <>
       <H1>JupyterLab Variants</H1>
       <JLButton onClick={action('jupyterlab clicked')} type="button">
@@ -96,5 +88,49 @@ JupyterLab Themed Buttons.
         Secondary
       </Button>
     </ThemeProvider>
+  </Story>
+</Canvas>
+
+This demonstrates a button with text
+
+<Canvas>
+  <Story name="Storybook Buttons">
+     <SButton onClick={action('clicked')}>Storybook Button</SButton>;
+  </Story>
+</Canvas>
+
+This demonstrates buttons with Emoji.
+
+<Canvas>
+  <Story name="Emoji Buttons">
+    <Button>
+      <span role="img" aria-label="so cool">
+        😀 😎 👍 💯
+      </span>
+    </Button>
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Emoji  Buttons (more)">
+    <Button onClick={action('clicked')}>
+      <span role="img" aria-label="so cool">
+        😀 😎 👍 💯 🚀 🎉
+      </span>
+    </Button>
+  </Story>
+</Canvas>
+
+This demonstrates react hooks working inside stories. Go team! 🚀
+
+export const WithCounter = () => {
+  const [counter, setCounter] = useState(0);
+  const label = `Counter: ${counter}`;
+  return <Button onClick={() => setCounter(counter + 1)}>{label}</Button>;
+};
+
+<Canvas>
+  <Story name="Counter Button">
+    <WithCounter />
   </Story>
 </Canvas>
