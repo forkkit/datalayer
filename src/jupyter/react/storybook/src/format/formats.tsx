@@ -8,6 +8,10 @@ export const H2: React.FC = (props): JSX.Element => {
   return <h2>{props.children}</h2>
 }
 
+export const H3: React.FC = (props): JSX.Element => {
+  return <h3>{props.children}</h3>
+}
+
 export const Container: React.FC = (props): JSX.Element => {
   return (
     <span style={{border: '1px solid black', padding: 5}}>

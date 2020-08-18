@@ -25,7 +25,7 @@ class WrapperWidget extends Widget {
   }
 }
 
-export default class Dock extends React.PureComponent<IDockProps, IDockState> {
+export default class LuminoAdapter2 extends React.PureComponent<IDockProps, IDockState> {
   private dock: DockPanel;
   private elem: HTMLElement;
 
@@ -33,16 +33,6 @@ export default class Dock extends React.PureComponent<IDockProps, IDockState> {
     super(props)
     this.dock = new DockPanel();
     this.elem = document.createElement("div");
-  }
-
-  private feed(component: JSX.Element, widgetInfos: IWidgetInfo[]) {
-    let node = document.createElement("div");
-    let widget = new WrapperWidget("Widget Name", node);
-    this.dock.addWidget(widget);
-    widgetInfos.push({
-      component: component,
-      node: node,
-    });
   }
 
   public componentWillMount() {
@@ -72,6 +62,16 @@ export default class Dock extends React.PureComponent<IDockProps, IDockState> {
         }
       </div>
     );
+  }
+
+  private feed(component: JSX.Element, widgetInfos: IWidgetInfo[]) {
+    let node = document.createElement("div");
+    let widget = new WrapperWidget("Widget Name", node);
+    this.dock.addWidget(widget);
+    widgetInfos.push({
+      component: component,
+      node: node,
+    });
   }
 
 }

@@ -57,6 +57,18 @@ module.exports = ({ config }) => {
     }
   });
 
+//  config.module.rules.push({
+//    test: /\.css?$/,
+//    use: ['style-loader', 'css-loader'],
+//  });
+//  config.resolve.extensions.push('css');
+
+  config.module.rules.push({
+    test: /\.s[ac]ss(\?v=\d+\.\d+\.\d+)?$/,
+    use: ['style-loader', 'css-loader', 'sass-loader'],
+  });
+  config.resolve.extensions.push('scss', 'sass');
+
   config.module.rules.push({
     // in js, jsx, ts, and tsx files svg is loaded as a raw string
     test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,

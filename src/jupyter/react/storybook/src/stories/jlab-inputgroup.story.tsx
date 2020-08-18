@@ -24,7 +24,6 @@ export const InputGroupStory = () => {
       placeholder="Filter histogram..."
     />
 };
-
 InputGroupStory.story = {
   name: 'Input Group',
   parameters: {

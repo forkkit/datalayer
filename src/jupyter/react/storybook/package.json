@@ -4,6 +4,7 @@
   "license": "Apache-2.0",
   "private": false,
   "scripts": {
+    "start": "webpack-dev-server",
     "tsc": "tsc",
     "build": "concurrently \"tsc\" \"gulp resources-to-lib\"",
     "build:storybook": "build-storybook -c .storybook -o .out",
@@ -16,6 +17,7 @@
     "@datalayer/jupyter-react-widgets": "0.0.3",
     "@jupyterlab/ui-components": "2.1.0",
     "@jupyterlab/theme-light-extension": "2.1.0",
+    "@lumino/default-theme": "^0.4.4",
     "@lumino/messaging": "^1.3.2",
     "@lumino/virtualdom": "^1.3.0",
     "@lumino/widgets": "^1.9.4",
@@ -45,6 +47,7 @@
     "babel-loader": "^8.0.6",
     "css-loader": "~3.2.0",
     "raw-loader": "~4.0.0",
+    "sass-loader": "8.0.2",
     "react-docgen-typescript-loader": "3.7.2",
     "style-loader": "~1.0.1",
     "file-loader": "5.0.2",
@@ -57,7 +60,11 @@
     "gulp": "4.0.2",
     "gulp-append-prepend": "1.0.8",
     "gulp-filter": "6.0.0",
-    "typescript": "~3.7.3"
+    "typescript": "~3.7.3",
+    "webpack": "4.43.0",
+    "webpack-cli": "3.3.11",
+    "webpack-dev-server": "3.10.3",
+    "html-webpack-plugin": "4.3.0"
   },
   "peerDependencies": {
     "react": "16.9.0",
