@@ -10,3 +10,18 @@ export default {
     },
   },
 };
+
+function Welcome(props) {
+  return <h1>Hello, {props.name}</h1>;
+}
+export const welcome = () => {  
+  return Welcome({name: 'Eric'})
+};
+docs(welcome,`
+Hello world!
+
+### Markdown support working well!
+
+1. list
+1. list
+`);
