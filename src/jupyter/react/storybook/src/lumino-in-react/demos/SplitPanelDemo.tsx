@@ -3,10 +3,10 @@ import * as React from "react";
 
 import "./App.scss";
 
-import BoxPanelReact from "./../adapter/panels/BoxPanelReact";
-import SplitPanelReact from "./../adapter/panels/SplitPanelReact";
-import LuminoAdapter1 from "./../adapter/LuminoAdapter1";
-import {absoluteFill} from "./../adapter/common/Common";
+import BoxPanelReact from "../panels/BoxPanelReact";
+import SplitPanelReact from "../panels/SplitPanelReact";
+import LuminoAdapter1 from "../LuminoAdapter1";
+import {absoluteFill} from "../common/Common";
 
 export default class SplitPanelDemo extends React.Component<{}, any> {
 

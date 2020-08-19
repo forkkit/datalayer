@@ -1,7 +1,7 @@
 
 import * as React from "react";
-import TabPanelReact from "./../adapter/panels/TabPanelReact";
-import LuminoAdapter1 from "./../adapter/LuminoAdapter1";
+import TabPanelReact from "../panels/TabPanelReact";
+import LuminoAdapter1 from "../LuminoAdapter1";
 
 import "./App.scss";
 

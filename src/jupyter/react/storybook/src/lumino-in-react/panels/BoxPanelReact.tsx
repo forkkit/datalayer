@@ -1,8 +1,5 @@
 
-import * as React from "react";
-
 import {BoxPanel} from "@lumino/widgets";
-
 import ContainerWidgetReact from "../common/ContainerWidgetReact";
 
 interface BoxPanelReactProps {

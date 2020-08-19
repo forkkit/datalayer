@@ -1,8 +1,5 @@
 
-import * as React from "react";
-
 import {TabPanel} from "@lumino/widgets";
-
 import ContainerWidgetReact from "../common/ContainerWidgetReact";
 
 import "@lumino/widgets/style/tabpanel.css";

@@ -2,9 +2,7 @@
 import * as React from "react";
 import {Widget} from "@lumino/widgets";
 
-export const WidgetParentContext = React.createContext<IWidgetParent>({
-  receiveChild: (child: Widget) => {}
-});
+export const WidgetParentContext = React.createContext<any>(null);
 
 export interface IWidgetParent {
   receiveChild: (child: Widget) => void;

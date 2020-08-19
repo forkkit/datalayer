@@ -2,7 +2,7 @@ import {Message} from '@lumino/messaging';
 import {BoxPanel, DockPanel, Menu, MenuBar, Widget} from '@lumino/widgets';
 import {CommandRegistry} from '@lumino/commands';
 
-import LuminoAdapter1 from './../adapter/LuminoAdapter1'
+import LuminoAdapter1 from '../LuminoAdapter1'
 
 import './style/index.css';
 
@@ -36,13 +36,13 @@ export default class MultipleDocksDemo extends LuminoAdapter1 {
       commands.processKeydownEvent(event);
     });
 
-    let r1 = new DocContentWidget('Red');
-    let b1 = new DocContentWidget('Blue');
-    let g1 = new DocContentWidget('Green');
-    let y1 = new DocContentWidget('Yellow');
+    let r1 = new DockContentWidget('Red');
+    let b1 = new DockContentWidget('Blue');
+    let g1 = new DockContentWidget('Green');
+    let y1 = new DockContentWidget('Yellow');
 
-    let r2 = new DocContentWidget('Red');
-    let b2 = new DocContentWidget('Blue');
+    let r2 = new DockContentWidget('Red');
+    let b2 = new DockContentWidget('Blue');
 
     let dock = new DockPanel();
     dock.addWidget(r1);
@@ -53,39 +53,44 @@ export default class MultipleDocksDemo extends LuminoAdapter1 {
     dock.addWidget(b2, { mode: 'split-right', ref: y1 });
     dock.id = 'dock';
 
-    let savedLayouts: DockPanel.ILayoutConfig[] = [];
+    try {
 
-    commands.addCommand('save-dock-layout', {
-      label: 'Save Layout',
-      caption: 'Save the current dock layout',
-      execute: () => {
-        savedLayouts.push(dock.saveLayout());
-      }
-    });
-
-    commands.addCommand('restore-dock-layout', {
-      label: args => {
-        return `Restore Layout ${args.index as number}`;
-      },
-      execute: args => {
-        dock.restoreLayout(savedLayouts[args.index as number]);
-      }
-    });
+      let savedLayouts: DockPanel.ILayoutConfig[] = [];
+  
+      commands.addCommand('save-dock-layout', {
+        label: 'Save Layout',
+        caption: 'Save the current dock layout',
+        execute: () => {
+          savedLayouts.push(dock.saveLayout());
+        }
+      });
+      commands.addCommand('restore-dock-layout', {
+        label: args => {
+          return `Restore Layout ${args.index as number}`;
+        },
+        execute: args => {
+          dock.restoreLayout(savedLayouts[args.index as number]);
+        }
+      });
+    }
+    catch (error) {
+      console.warn(error);
+    }
 
     BoxPanel.setStretch(dock, 1);
-
-    let main = new BoxPanel({ direction: 'left-to-right', spacing: 0 });
+    const main = new BoxPanel({ direction: 'top-to-bottom', spacing: 0 });
     main.id = 'main';
+//    main.addWidget(bar);
     main.addWidget(dock);
 
-    window.onresize = () => { main.update(); };
+    this.widget = main;
 
-    Widget.attach(bar, document.body);
-    Widget.attach(main, document.body);
+    window.onresize = () => { this.widget.update(); };
 
   }
 
   createMenu(): Menu {
+
     let sub1 = new Menu({ commands });
     sub1.title.label = 'More...';
     sub1.title.mnemonic = 0;
@@ -119,14 +124,15 @@ export default class MultipleDocksDemo extends LuminoAdapter1 {
     root.addItem({ command: 'example:close' });
   
     return root;
+    
   }  
 
 }
 
-class DocContentWidget extends Widget {
+class DockContentWidget extends Widget {
 
   constructor(name: string) {
-    super({ node: DocContentWidget.createNode() });
+    super({ node: DockContentWidget.createNode() });
     this.setFlag(Widget.Flag.DisallowLayout);
     this.addClass('content');
     this.addClass(name.toLowerCase());

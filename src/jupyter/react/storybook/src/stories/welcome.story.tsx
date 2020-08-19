@@ -1,11 +1,9 @@
 import React from 'react';
 import { docs } from './../utils/storybook';
-import SplitPanelDemo from './../demos/SplitPanelDemo';
-import TabPanelDemo from './../demos/TabPanelDemo';
 
 export default {
-  title: 'Simple/Simple',
-  id: 'simple-id',
+  title: 'Welcome/Welcome',
+  id: 'welcome-id',
   parameters: {
     docs: {
       inlineStories: true,
@@ -13,17 +11,12 @@ export default {
   },
 };
 
-export const demo1 = () => <SplitPanelDemo />
-export const demo2 = () => <TabPanelDemo />
-
 function Welcome(props) {
   return <h1>Hello, {props.name}</h1>;
 }
-
 export const welcome = () => {  
-  return Welcome({name: 'eric'})
+  return Welcome({name: 'Eric'})
 };
-
 docs(welcome,`
 Hello world!
 
