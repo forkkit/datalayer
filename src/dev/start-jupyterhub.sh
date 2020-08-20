@@ -16,7 +16,7 @@ start_without_docker() {
 start_local() {
   open http://minikube.datalayer.io.local:8000/jupyterhub && \
     jupyterhub -f \
-      $DLAHOME/etc/conf/jupyterhub/keycloak-docker/jupyterhub_config.py
+      $DLAHOME/etc/jupyterhub/keycloak-docker/jupyterhub_config.py
 }
 
 # start_with_docker() {

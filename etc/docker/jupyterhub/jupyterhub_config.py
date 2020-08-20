@@ -227,7 +227,7 @@ c.Spawner.environment = {
     'DLA_SOLR_ZK_HOST': os.getenv('DLA_SOLR_ZK_HOST'),
 }
 
-# c.Spawner.args = ['--JupyterApp.config_file={}/etc/conf/jupyter/hub/docker/jupyter_notebook_config.py'.format(os.getenv('$DLAHOME'))]
+# c.Spawner.args = ['--JupyterApp.config_file={}/etc/jupyter/hub/docker/jupyter_notebook_config.py'.format(os.getenv('$DLAHOME'))]
 c.Spawner.args = ['--NotebookApp.tornado_settings={"headers":{"Content-Security-Policy": "frame-ancestors *"}}']   
 c.JupyterHub.tornado_settings = { 'headers': { 'Content-Security-Policy': "frame-ancestors *"} }
 c.NotebookApp.tornado_settings = { 'headers': { 'Content-Security-Policy': "frame-ancestors *"} }

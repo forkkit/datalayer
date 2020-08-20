@@ -37,8 +37,8 @@ WORKDIR /dla
 ADD dist/kuber kuber
 ADD static static
 
-RUN mkdir -p /etc/conf/datalayer
-COPY kuber.yml /etc/conf/datalayer/kuber.yml
+RUN mkdir -p /etc/datalayer
+COPY kuber.yml /etc/datalayer/kuber.yml
 
 # PORTS
 

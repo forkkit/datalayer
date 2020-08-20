@@ -190,10 +190,10 @@ export ZOOKEEPER_HOME=$DLAOPT/zookeeper
 export PATH=$ZOOKEEPER_HOME/bin:$PATH
 
 if [ -z "$ZOOKEEPER_CONF_FILE" ]; then
-  export ZOOKEEPER_CONF_FILE=$DLAHOME/etc/conf/zookeeper/zoo.cfg
+  export ZOOKEEPER_CONF_FILE=$DLAHOME/etc/zookeeper/zoo.cfg
 fi
 
-export ZOOKEEPER_CONF_DIR=$DLAHOME/etc/conf/zookeeper
+export ZOOKEEPER_CONF_DIR=$DLAHOME/etc/zookeeper
 # export ZOO_LOG_DIR=$ZOOKEEPER_HOME/logs
 # export PATH=$ZOOKEEPER_HOME/bin:$PATH
 
@@ -214,9 +214,9 @@ export HADOOP_VERSION=3.2.1
 
 export HADOOP_HOME=$DLAOPT/hadoop
 export PATH=$HADOOP_HOME/bin:$HADOOP_HOME/sbin:$PATH
-export HADOOP_CONF_DIR=$DLAHOME/etc/conf/hadoop
+export HADOOP_CONF_DIR=$DLAHOME/etc/hadoop
 export DLA_HADOOP_DATA_DIR=$DLAHOME/var/hdfs
-export DLA_HADOOP_CONF_TEMPLATE_DIR=$DLAHOME/etc/conf/hadoop/template
+export DLA_HADOOP_CONF_TEMPLATE_DIR=$DLAHOME/etc/hadoop/template
 
 export HADOOP_OPTS="$HADOOP_OPTS -Djava.library.path=$HADOOP_HOME/lib/native"
 
@@ -242,7 +242,7 @@ then
     fi
     if [ -z "$HADOOP_CONF_DIR" ]
     then
-      export HADOOP_CONF_DIR=$DLAHOME/etc/conf/hadoop
+      export HADOOP_CONF_DIR=$DLAHOME/etc/hadoop
       if [ "$DLA_SECURITY" == "kerberos" ]
       then
         export DLA_HADOOP_CONF_TEMPLATE_DIR=$DLAHOME/etc/hdfs/template/kerberos
@@ -313,7 +313,7 @@ export HBASE_HOME=$DLAOPT/hbase
 #   export HBASE_HOME=$DLAOPT/hbase-$HBASE_VERSION
 # fi
 export PATH=$HBASE_HOME/bin:$PATH
-export HBASE_CONF_DIR=$DLAHOME/etc/conf/hbase
+export HBASE_CONF_DIR=$DLAHOME/etc/hbase
 # if [ -z "$HBASE_CONF_DIR" ]; then
 #  export HBASE_CONF_DIR=$DLAHOME/etc/hbase/conf
 # fi
@@ -343,7 +343,7 @@ export PATH=$LUKE_HOME/bin:$PATH
 export SOLR_VERSION=8.5.1
 export SOLR_HOME=$DLAOPT/solr
 export PATH=$SOLR_HOME/bin:$PATH
-export SOLR_CONF_DIR=$DLAHOME/etc/conf/solr/datalayer
+export SOLR_CONF_DIR=$DLAHOME/etc/solr/datalayer
 
 # ------------------------------------
 

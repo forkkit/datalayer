@@ -17,7 +17,7 @@ $SOLR_HOME/bin/solr create \
   -c datalayer \
   -shards $SCALE \
   -replicationFactor $SCALE \
-  -d $DLAHOME/etc/conf/solr/datalayer \
+  -d $DLAHOME/etc/solr/datalayer \
   -p 8983 \
   -force
-# $SOLR_HOME/bin/solr zk upconfig -n datalayer -d $DLAHOME/etc/conf/solr -p 8983
+# $SOLR_HOME/bin/solr zk upconfig -n datalayer -d $DLAHOME/etc/solr -p 8983

@@ -95,7 +95,7 @@ func initConfig() {
 	viper.SetConfigType("yml")
 
 	viper.AddConfigPath("$HOME/.datalayer")
-	viper.AddConfigPath("/etc/conf/datalayer")
+	viper.AddConfigPath("/etc/datalayer")
 	viper.AddConfigPath("./config")
 	viper.AddConfigPath("./")
 	viper.WatchConfig()
