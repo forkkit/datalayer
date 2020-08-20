@@ -69,6 +69,7 @@ jupyter-proxy-R|https://github.com/datalayer-contrib/jupyter-proxy-R.git|https:/
 jupyter-proxy-server|https://github.com/datalayer-contrib/jupyter-proxy-server.git|https://github.com/jupyterhub/jupyter-server-proxy.git|master \
 jupyter-pyzmq|https://github.com/datalayer-contrib/jupyter-pyzmq.git|https://github.com/zeromq/pyzmq.git|master \
 jupyter-qtconsole|https://github.com/datalayer-contrib/jupyter-qtconsole.git|https://github.com/jupyter/qtconsole.git|master \
+jupyter-react|https://github.com/datalayer/jupyter-react.git|https://github.com/datalayer/jupyter-react.git|master \
 jupyter-report|https://github.com/datalayer-contrib/jupyter-report.git|https://github.com/choldgraf/nbreport.git|master \
 jupyter-rtc|https://github.com/datalayer-contrib/jupyter-rtc.git|https://github.com/jupyterlab/rtc.git|main \
 jupyter-server|https://github.com/datalayer-contrib/jupyter-server.git|https://github.com/jupyter/jupyter_server.git|master \
