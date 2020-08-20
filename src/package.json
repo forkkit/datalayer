@@ -42,13 +42,13 @@
     "**/@lumino/coreutils": "1.5.0",
     "**/@types/react": "16.9.16",
     "**/@types/react-dom": "16.9.4",
+    "**/html-webpack-plugin": "4.3.0",
     "**/react": "16.9.0",
     "**/react-dom": "16.9.0",
     "**/typescript": "beta",
-    "**/webpack-dev-server": "3.11.0",
-    "**/html-webpack-plugin": "4.3.0",
-    "**/webpack": "4.44.1",
-    "**/webpack-cli": "next"
+    "**/webpack": "5.0.0-beta.16",
+    "**/webpack-cli": "next",
+    "**/webpack-dev-server": "3.11.0"
   },
   "resolutions-wp4": {
     "**/webpack": "4.44.1"
