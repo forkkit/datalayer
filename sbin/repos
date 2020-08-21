@@ -62,7 +62,7 @@ jupyter-kernel-spark-moz|https://github.com/datalayer-contrib/jupyter-kernel-spa
 jupyter-kernel-spark-toree|https://github.com/datalayer-contrib/jupyter-kernel-spark-toree.git|https://github.com/apache/incubator-toree.git|master \
 jupyter-melt|https://github.com/datalayer-contrib/jupyter-melt.git|https://github.com/minrk/nbmelt.git|master \
 jupyter-notebook|https://github.com/datalayer-contrib/jupyter-notebook.git|https://github.com/jupyter/notebook.git|master \
-jupyter-notebook-classic|https://github.com/datalayer-contrib/jupyter-notebook-classic.git|https://github.com/zsailer/nbclassic.git|master \
+jupyter-notebook-classic|https://github.com/datalayer-contrib/jupyter-notebook-classic.git|https://github.com/jupyterlab/nbclassic.git|master \
 jupyter-packaging|https://github.com/datalayer-contrib/jupyter-packaging.git|https://github.com/jupyter/jupyter-packaging.git|master \
 jupyter-pizzabutton|https://github.com/datalayer-contrib/jupyter-pizzabutton.git|https://github.com/peterskipper/pizzabutton.git|master \
 jupyter-proxy-R|https://github.com/datalayer-contrib/jupyter-proxy-R.git|https://github.com/jupyterhub/jupyter-rsession-proxy.git|master \
