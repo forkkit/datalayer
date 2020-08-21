@@ -120,6 +120,7 @@ github_issue_summarization/build/
 !**/.vscode
 !.env
 !.gitattributes
+!.readthedocs.yml
 !bin/dla
 !dist/README.md
 !lab/medias/output/README.md

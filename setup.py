@@ -27,7 +27,7 @@ setup(
         "Programming Language :: Python :: Implementation :: CPython",
         "Programming Language :: Python :: Implementation :: PyPy",
     ],
-    keywords="jupyter rtc",
+    keywords="datalayer",
     python_requires=">=3.6",
     install_requires=[
         "fastapi",
