@@ -31,6 +31,10 @@ Datalayer is available via many channels.
 
 Read more on our [documentation site](https://datalayer.readthedocs.io).
 -->
+## 🎓 Learn Data
+
+Level up you Data knowledge through interactive exercises and examples. Users get online **Jupyter notebooks** with **collaboration** and **sharing** capabilities. The user notebooks are **reproducible**, **scalable** and **secured**.
+
 ## 📓 Data Papers
 
 Write and Publish papers so other users can understand, reuse and build on top of your publication.
@@ -50,10 +54,6 @@ Write and Publish papers so other users can understand, reuse and build on top o
 1.  **and more...**
 
     It is really on what you want to achieve with Data and Code.
-
-## 🎓 Learn Data
-
-Level up you Data knowledge through interactive exercises and examples. Users get online **Jupyter notebooks** with **collaboration** and **sharing** capabilities. The user notebooks are **reproducible**, **scalable** and **secured**.
 
 ## 🧐 What's Inside this Monorepo?
 
