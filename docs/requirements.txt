@@ -1,8 +1,0 @@
-myst_parser
-pyyaml
-docutils>=0.15
-sphinx
-sphinxcontrib-bibtex
-ipython
-sphinx-book-theme
-sphinx_tabs
