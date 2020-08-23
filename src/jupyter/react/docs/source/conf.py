@@ -66,7 +66,7 @@ author = 'Project Datalayer'
 # built documents.
 
 import os
-_version_py = os.path.join('..', '..', 'version.py')
+_version_py = os.path.join('..', '..', '..', '..', 'src', 'datalayer', 'version.py')
 version_ns = {}
 
 with open(_version_py, mode='r') as version_file:

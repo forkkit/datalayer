@@ -7,9 +7,8 @@ This folder contains content for the [Datalayer ReadTheDocs website](https://dat
 ```bash
 # Install and build the doc site.
 git clone https://github.com/datalayer/datalayer && \
-  cd datalayer && \
-  pip install -e .[rtd] && \
-  cd docs && \
+  cd datalayer/docs && \
+  pip install -r requirements.txt && \
   make html && \
   open build/html/index.html
 ```
